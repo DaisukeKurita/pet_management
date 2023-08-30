@@ -1,0 +1,29 @@
+<div class="main posts-new">
+  <div class="container">
+    <h1 class="form-heading">編集する</h1>
+    <div class="form">
+      <div class="form-body">
+        <%= form_with(url: "/pets/#{@pet.id}", method: :patch) do |form| %>
+          <% @pet.errors.full_messages.each do |message| %>
+            <div class="form-error">
+              <%= message %>
+            </div>
+          <% end %>
+
+          <%= form.label :name, Pet.human_attribute_name(:name) %>
+          <%= form.text_field :name, value: @pet.name %>
+
+          <%= form.label :kind, Animal.human_attribute_name(:kind) %>
+          <%= form.collection_select :animal_id, Animal.all, :id, :kind, {selected: @pet.animal_id} %>
+
+          <%= form.submit "修正" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="post-user-name">
+      <div class="right-link">
+        <%= link_to("記録一覧", "/pets/#{@pet.id}") %>
+      </div>
+    </div>
+  </div>
+</div>

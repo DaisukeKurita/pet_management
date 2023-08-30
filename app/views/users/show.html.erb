@@ -1,0 +1,27 @@
+<div class="main user-show">
+  <div class="container">
+    <div class="user">
+      <h2><%= @user.name %></h2>
+      <p><%= @user.email %></p>
+      <div class="post-user-name">
+        <%= link_to("新しいペットを登録する", "/pets/new") %>
+        <%= link_to("ユーザーアカウント編集", "/users/#{@user.id}/edit") %>
+        <%= link_to("ユーザーアカウント削除", "/users/#{@user.id}/destroy", data: {"turbo-method": :post}) %>
+      </div>
+    </div>
+
+    <ul class="user-tabs">
+      <li class="active">ペット一覧</li>
+    </ul>
+
+    <% @user.pets.each do |pet| %>
+      <div class="posts-index-item">
+        <div class="post-right">
+          <div class="post-user-name">
+            <%= link_to(pet.name, "/pets/#{pet.id}") %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

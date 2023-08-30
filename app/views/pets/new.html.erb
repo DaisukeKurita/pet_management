@@ -1,0 +1,30 @@
+<div class="main users-new">
+  <div class="container">
+    <div class="form-heading">新規ペット登録</div>
+    <div class="form users-form">
+      <div class="form-body">
+
+        <%= form_with(url: "/pets" ) do |form| %>
+          <% @pet.errors.full_messages.each do |message| %>
+            <div class="form-error">
+              <%= message %>
+            </div>
+          <% end %>
+
+          <%= form.label :name, Pet.human_attribute_name(:name) %>
+          <%= form.text_field :name %>
+
+          <%= form.label :kind, Animal.human_attribute_name(:kind) %>
+          <%= form.collection_select :animal_id, Animal.all, :id, :kind, {selected: 1} %>
+
+          <%= form.submit "新規登録" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="post-user-name">
+      <div class="right-link">
+        <%= link_to("ペット一覧", "/users/#{@current_user.id}") %>
+      </div>
+    </div>
+  </div>
+</div>

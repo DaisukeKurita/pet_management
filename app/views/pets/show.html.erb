@@ -1,0 +1,29 @@
+<div class="main user-show">
+  <div class="container">
+    <div class="user">
+      <h2><%= @pet.name %></h2>
+      <div class="post-user-name">
+        <%= link_to("新しい記録を付ける","/pets/#{@pet.id}/records/new") %>
+        <%= link_to("ペット一覧","/users/#{@current_user.id}") %>
+        <%= link_to("ペット名修正", "/pets/#{@pet.id}/edit") %>
+        <%= link_to("ペット登録解除", "/pets/#{@pet.id}", data: {"turbo-method": :delete} ) %>
+      </div>
+    </div>
+
+    <ul class="user-tabs">
+      <li class="active">記録一覧</li>
+    </ul>
+
+    <% @pet.records.each do |record| %>
+      <div class="posts-index-item">
+        <div class="post-right">
+          <div class="post-user-name">
+            <%= link_to("#{l record.date_and_time}", "/pets/#{record.pet_id}/records/#{record.id}") %>
+            <p><%= "食事量：#{record.amount_of_food}g" %></p>
+            <p><%= "水分量：#{record.amount_of_water}g" %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

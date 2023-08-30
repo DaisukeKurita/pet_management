@@ -1,0 +1,21 @@
+ja:
+  activerecord:
+    models:
+      animal: 動物
+      pet: ペット
+      record: 記録
+      user: ユーザー
+    attributes:
+      animal:
+        kind: 種類
+      pet:
+        name: ペット名
+      record:
+        date_and_time: 登録日時
+        amount_of_food: 食事量（単位：グラム）
+        amount_of_water: 水分量（単位：グラム）
+        note: ノート
+      user:
+        name: お名前
+        email: メールアドレス
+        password: パスワード

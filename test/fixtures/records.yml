@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date_and_time: 2023-08-23 07:37:28
+  amount_of_food: 1
+  amount_of_water: 1
+
+two:
+  date_and_time: 2023-08-23 07:37:28
+  amount_of_food: 1
+  amount_of_water: 1

@@ -1,0 +1,27 @@
+<div class="main users-new">
+  <div class="container">
+    <div class="form-heading">ユーザーアカウント編集</div>
+    <div class="form users-form">
+      <div class="form-body">
+
+        <%= form_with(url: "/users/#{@user.id}/update" ) do |form| %>
+          <% @user.errors.full_messages.each do |message| %>
+            <div class="form-error">
+              <%= message %>
+            </div>
+          <% end %>
+          <%= form.label :name, User.human_attribute_name(:name) %>
+          <%= form.text_field :name, value: @user.name %>
+
+          <%= form.label :email, User.human_attribute_name(:email) %>
+          <%= form.text_field :email, value: @user.email %>
+
+          <%= form.label :password, User.human_attribute_name(:password) %>
+          <%= form.password_field :password %>
+
+          <%= form.submit "修正" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

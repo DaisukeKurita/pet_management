@@ -1,0 +1,39 @@
+<div class="main posts-new">
+  <div class="container">
+    <h1 class="form-heading">修正する</h1>
+    <div class="form">
+      <div class="form-body">
+          <%= form_with(url: "/pets/#{@record.pet_id}/records/#{@record.id}", method: :patch ) do |form| %>
+          <% @record.errors.full_messages.each do |message| %>
+            <div class="form-error">
+              <%= message %>
+            </div>
+          <% end %>
+
+          <%= form.label :date_and_time, Record.human_attribute_name(:date_and_time) %>
+          <%= form.datetime_field :date_and_time, value: @record.date_and_time.strftime('%Y-%m-%dT%T') %>
+
+          <%= form.label :amount_of_food, Record.human_attribute_name(:amount_of_food) %>
+          <%= form.text_field :amount_of_food, value: @record.amount_of_food %>
+
+          <%= form.label :amount_of_water, Record.human_attribute_name(:amount_of_water) %>
+          <%= form.text_field :amount_of_water, value: @record.amount_of_water %>
+
+          <%= form.label :note, Record.human_attribute_name(:note) %>
+          <%= form.text_area :note, value: @record.note %>
+
+          <%= form.label :name, Pet.human_attribute_name(:name) %>
+          <%= @record.pet_name_check %>
+          <%= form.hidden_field :pet_id, value: @record.pet_id %>
+
+          <%= form.submit "修正" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="post-user-name">
+      <div class="right-link">
+        <%= link_to("記録詳細", "/pets/#{@record.pet_id}/records/#{@record.id}") %>
+      </div>
+    </div>
+  </div>
+</div>

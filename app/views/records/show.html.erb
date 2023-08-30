@@ -1,0 +1,20 @@
+<div class="main posts-show">
+  <div class="container">
+    <div class="posts-show-item">
+      <div class="post-user-name">
+        <h2><%= "#{@pet_name}の記録" %></h2>
+        <p><%= "登録日時：#{l @record.date_and_time}" %></p>
+        <p><%= "食事量：#{@record.amount_of_food}g" %></p>
+        <p><%= "水分量：#{@record.amount_of_water}g" %></p>
+        <p><%= "ノート：#{@record.note}" %></p>
+        <div class="right-link">
+          <%= link_to("編集", "/pets/#{@record.pet_id}/records/#{@record.id}/edit") %>
+          <%= link_to("削除", "/pets/#{@record.pet_id}/records/#{@record.id}", data: {"turbo-method": :delete}) %>
+        </div>
+      </div>
+    </div>
+    <div class="post-user-name right-link">
+      <%= link_to("#{@pet_name}記録一覧", "/pets/#{@record.pet_id}") %>
+    </div>
+  </div>
+</div>

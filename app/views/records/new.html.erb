@@ -1,0 +1,40 @@
+<div class="main users-new">
+  <div class="container">
+    <div class="form-heading">記録の登録</div>
+    <div class="form users-form">
+      <div class="form-body">
+
+        <%= form_with(url: "/pets/#{@pet.id}/records" ) do |form| %>
+          <% @record.errors.full_messages.each do |message| %>
+            <div class="form-error">
+              <%= message %>
+            </div>
+          <% end %>
+
+          <%= form.label :date_and_time, Record.human_attribute_name(:date_and_time) %>
+          <%= form.datetime_field :date_and_time %>
+
+          <%= form.label :amount_of_food, Record.human_attribute_name(:amount_of_food) %>
+          <%= form.text_field :amount_of_food, value: @record.amount_of_food %>
+
+          <%= form.label :amount_of_water, Record.human_attribute_name(:amount_of_water) %>
+          <%= form.text_field :amount_of_water, value: @record.amount_of_water %>
+
+          <%= form.label :note, Record.human_attribute_name(:note) %>
+          <%= form.text_area :note, value: @record.note %>
+
+          <%= form.label :name, Pet.human_attribute_name(:name)  %>
+          <%= @pet.name %>
+          <%= form.hidden_field :pet_id, value: @pet.id %>
+
+          <%= form.submit "新規登録" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="post-user-name">
+      <div class="right-link">
+        <%= link_to("記録一覧", "/pets/#{@pet.id}") %>
+      </div>
+    </div>
+  </div>
+</div>
